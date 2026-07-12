@@ -2,17 +2,61 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this survey, we presented a comprehensive taxonomy and benchmark
-for 3D Gaussian Splatting research. Our three-axis taxonomy---spanning
-task domain, module focus, and technique---provides a structured
-framework for understanding the rapidly growing field.
+\section{7. Limitations and Future
+Work}\label{limitations-and-future-work}
 
-We introduced the Drum Tower Dataset, a new real-world benchmark
-featuring Chinese Dong minority architecture, which poses unique
-challenges with its intricate geometry and multi-scale details.
-Our extensive experiments across multiple datasets and methods
-revealed key insights into quality-speed-memory trade-offs.
+This study has several limitations. First, the evaluation is primarily
+image-based. Without independent high-precision reference geometry,
+metric accuracy indicators such as cloud-to-cloud distance,
+cloud-to-mesh distance, Chamfer distance, Hausdorff distance, and
+completeness were not computed. Second, the corpus includes only four
+representative scenes; broader validation requires more tower types,
+regional variations, roof-tier densities, settlement contexts, and
+acquisition conditions. Third, the Chaoli scene lacks an independent
+LLFF-style test set, so its quantitative values should be treated as
+reference values rather than fully comparable test-set results. Fourth,
+GCP/RTK information and weather or lighting metadata were not available
+for all scenes, which may affect scale reliability and cross-scene
+comparability. Finally, downstream conservation tasks such as component
+segmentation, HBIM object generation, deformation monitoring, damage
+comparison, and multi-temporal assessment were not evaluated.
 
-We hope this survey serves as both a roadmap for newcomers and
-a reference for researchers, helping to guide future work toward
-the most impactful open challenges in 3D Gaussian Splatting.
+Future work should introduce independent geometric references, expand
+the open corpus, standardize acquisition metadata, and test how
+reconstruction quality affects HBIM modeling, component recognition,
+measurement reliability, and conservation-oriented interpretation.
+
+\section{8. Conclusion}\label{conclusion}
+
+This study established an open, conservation-oriented benchmark for
+UAV-based neural reconstruction of Dong drum towers. Four
+scenes---Chaoli, Congjiang, Zeli, and Zengchong---were used to compare
+NeRF, 2DGS, 3DGS, and INGP under a unified and reproducible workflow.
+The released benchmark includes the dataset, code, parameters,
+train/test splits, and reproduction protocols.
+
+3DGS achieved the strongest image fidelity and structural similarity,
+making it the most suitable evaluated method for high-fidelity visual
+documentation and structurally readable reconstruction. INGP achieved
+the best average LPIPS and the shortest training time, supporting rapid
+reconstruction and preliminary visualization. NeRF remained a stable but
+less efficient baseline. 2DGS underperformed under image-level metrics,
+but its surface-oriented formulation remains relevant for
+geometry-focused assessment.
+
+The main conclusion is that method selection for timber heritage
+reconstruction should be task-oriented. 3DGS is better suited to
+high-fidelity documentation and visual interpretation, while INGP is
+more practical for rapid and lightweight reconstruction.
+Geometry-sensitive tasks such as measurement, HBIM object extraction,
+deformation monitoring, and surface-based documentation require further
+validation with independent reference data. By linking open UAV heritage
+data, neural reconstruction methods, standardized evaluation, and
+conservation-oriented interpretation, this study provides a reproducible
+basis for method selection in complex timber heritage documentation.
+
+\textbf{\hl{Data Availability Statement}}
+
+\hl{The dataset, source code, experimental parameters, train/test
+splits, and reproduction protocols generated in this study are openly
+available in the project GitHub repository.}
