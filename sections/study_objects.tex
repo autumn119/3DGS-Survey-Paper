@@ -2,22 +2,216 @@
 \section{An in-depth study of the various features of the Drum Tower}
 \label{sec:study_objects}
 
-\subsubsection{\texorpdfstring{\textbf{\hl{3 Study
-Objects}}}{3 Study Objects}}\label{study-objects}
+\section{3.Study Area and Empirical
+Corpus}\label{study-area-and-empirical-corpus}
 
-\hl{The four selected cases---Chaoli, Congjiang, Zeli, and
+The study area is located in Qiandongnan Miao and Dong Autonomous
+Prefecture, southeastern Guizhou Province, China (showed in fig.2). This
+mountainous multiethnic region is characterized by complex terrain,
+dense Dong settlements, and a rich tradition of timber architectural
+heritage. Dong villages in this region retain a large number of
+traditional drum towers, which are closely associated with village
+spatial organization, communal life, ritual practice, and the
+transmission of timber construction knowledge. These characteristics
+make Qiandongnan an appropriate empirical setting for investigating
+UAV-based neural reconstruction methods under real heritage
+documentation conditions.
+
+The selected cases are four representative Dong drum towers: Chaoli,
+Congjiang, Zeli, and Zengchong. They were chosen because they reflect
+differences in tower morphology, roof hierarchy, surrounding spatial
+conditions, component density, and image acquisition difficulty. Rather
+than treating the four cases as interchangeable architectural samples,
+this study uses them as heterogeneous heritage scenes to examine whether
+different neural reconstruction methods can remain robust when
+confronted with multi-layered eaves, repeated timber components,
+roof-crown details, occluded lower spaces, and complex illumination
+conditions.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image3}
+    \label{fig:pandoc_3}
+\end{figure}
+
+
+\textbf{Fig. 2. Location of the study area and selected Dong drum
+tower cases in Qiandongnan Miao and Dong Autonomous Prefecture, Guizhou
+Province, China.}
+
+(a) Location of Guizhou Province in China. (b) Location of
+Qiandongnan Miao and Dong Autonomous Prefecture within Guizhou Province.
+(c) Spatial distribution of the selected Dong drum tower cases,
+including Chaoli, Congjiang, Zeli, and Zengchong Drum Towers.
+
+Administrative boundaries and base map data were used for spatial
+reference; all selected drum tower cases are marked by red stars.
+
+\textbf{2.4 Conservation significance and documentation requirements
+of Dong drum towers}
+
+Dong drum towers are conservation-relevant timber heritage systems
+whose architectural components encode structural logic, craft knowledge,
+spatial hierarchy, and symbolic meaning. Digital documentation should
+therefore capture not only global tower morphology but also
+component-level details essential for restoration, HBIM-oriented
+modeling, and long-term monitoring.
+
+\textbf{Table 1. Conservation-relevant architectural components and
+documentation requirements of Dong drum towers.}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1939}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2513}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2339}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3210}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Heritage component}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Conservation significance}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Documentation challenge}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Required reconstruction capability}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Layered eaves & Reflect roof hierarchy and traditional
+carpentry logic & Self-occlusion, repeated elements & High
+edge fidelity and multi-layer separation \\
+Roof-crown system & Symbolic and morphological marker &
+Small-scale elevated component & Accurate recovery of fine
+upper details \\
+Columns and beams & Structural framework and vertical order &
+Dense intersections, occlusion & Component-level visibility and
+structural continuity \\
+Mortise-and-tenon joint areas & Traditional timber connection
+knowledge & Small-scale details, low contrast & Fine-detail
+preservation and readability \\
+Bracket-like supporting members & Support between roof layers
+& Repeated elements, dense shadows & Component
+distinguishability and stable reconstruction \\
+Lattice panels and enclosure components & Enclosure form and
+decorative patterns & Thin elements, repetitive patterns &
+Accurate boundary recovery and texture consistency \\
+Lower base area & Restoration and monitoring & Occlusion,
+limited low-angle UAV views & Robust reconstruction of lower
+components \\
+Internal timber space & Hidden structural relationships &
+Low illumination, sparse views & Robust reconstruction under
+sparse, low-texture conditions \\
+Areas beneath multi-layered eaves & Weathering, repair traces
+& Strong shadows, narrow angles & Shadow-tolerant
+reconstruction and preservation of local details \\
+\end{longtable}
+
+This component-level understanding establishes a clear link between
+heritage significance, reconstruction challenges, and the capabilities
+required from UAV-based neural reconstruction methods. It provides the
+foundation for evaluating whether methods such as NeRF, 2DGS, 3DGS, and
+INGP can preserve conservation-relevant features.
+
+\textbf{2.5 Typical Dong drum tower morphologies}
+
+Dong drum towers exhibit substantial morphological diversity,
+largely attributable to traditional construction practices in which
+master carpenters relied on heuristic memory, experiential rules, and
+practical knowledge rather than standardized blueprints. Quadrilateral
+plans are most common, while hexagonal and octagonal forms occur less
+frequently. Four morphological attributes---overall height, number of
+eave layers, roof type, and plan shape---serve as key parameters for
+describing tower variation and guiding comparative modeling and
+analysis.
+
+Morphological diversity provides the basis for selecting
+representative cases and examining whether neural reconstruction methods
+can robustly capture towers with different roof hierarchies, component
+densities, spatial configurations, and surrounding environmental
+conditions. As shown in Fig. 3 and Fig. 4, the construction of a Dong
+drum tower involves coordinated roof layers, column--beam joints,
+bracket supports, lattice panels, corner rafters, enclosure elements,
+and ornamental roof-crown details. These complex elements provide a
+component-level basis for evaluating whether reconstruction methods can
+preserve both global morphology and fine architectural details relevant
+to conservation, restoration surveying, and HBIM-oriented
+documentation.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image4}
+    \label{fig:pandoc_4}
+\end{figure}
+
+
+\textbf{Fig. 3. Construction details of typical timber components in
+a Dong drum tower.}\\
+The figure shows representative construction details, including roof
+layers, column--beam joints, bracket supports, timber lattice panels,
+corner rafters, decorative elements, and \emph{Meirenkao} leaning rails.
+These component-level drawings demonstrate the coordinated structural
+and ornamental logic of Dong timber architecture and explain why
+high-resolution documentation is required for recording both overall
+form and fine construction features.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3190}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6810}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image5}
+    \label{fig:pandoc_5}
+\end{figure}
+
+&
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image6}
+    \label{fig:pandoc_6}
+\end{figure}
+
+\end{longtable}
+
+\textbf{Fig. 4. Elevation and sectional drawings of a representative
+Dong drum tower.}\\
+The drawings illustrate multi-tiered roof systems, upturned eave
+corners, small grey-tile roofing, supporting columns, beams, purlins,
+decorative eave elements, and Meirenkao leaning rails. The layered roof
+configuration and repeated eave modules demonstrate structural
+complexity and explain reconstruction challenges such as self-occlusion,
+repetitive roof geometry, shadowed eave spaces, and high-frequency
+architectural details. Beam top elevation increases cumulatively from
+5.0 m at the first floor to 21.7 m at the seventeenth floor, while most
+intermediate floors maintain a regular height of 0.9 m, reflecting a
+vertically modular timber structural system.
+
+\subsubsection{\textbf{3 Study
+Objects}}\label{study-objects}
+
+The four selected cases---Chaoli, Congjiang, Zeli, and
 Zengchong---provide a representative empirical basis for method
 comparison. The external forms and structural characteristics of the
 four drum towers are shown in Fig.5. This selection strategy emphasizes
 heterogeneity in reconstruction difficulty, covering variations in roof
 hierarchy, timber density, shadowed spaces, viewpoint continuity, and
-village surroundings.}
+village surroundings.
 
-\includegraphics[width=6.6875in,height=4.41181in]{figures/media/image7.png}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image7}
+    \label{fig:pandoc_7}
+\end{figure}
 
-\textbf{\hl{Fig. 5. Four Dong drum tower cases.}}
 
-\hl{As shown in Table 2, Congjiang Drum Tower has a relatively clear
+\textbf{Fig. 5. Four Dong drum tower cases.}
+
+As shown in Table 2, Congjiang Drum Tower has a relatively clear
 external geometry, but still presents challenges in handling repetitive
 timber textures and preserving local details. Zeli Drum Tower is
 characterized by a distinctly layered roof structure, making it suitable
@@ -28,7 +222,7 @@ viewpoint continuity and unstable test-view construction conditions,
 which directly affect view synthesis quality and cross-method
 comparability. Zengchong Drum Tower contains dense multi-layered eave
 geometry and rich timber-component details, posing substantial
-challenges for eva.}
+challenges for eva.
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0654}}
@@ -36,59 +230,59 @@ challenges for eva.}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2499}}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3237}}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2321}}@{}}
-\caption{\textbf{\hl{Table 2. Overview of the four Dong drum tower cases
-and their main reconstruction challenges}}}\tabularnewline
+\caption{\textbf{Table 2. Overview of the four Dong drum tower cases
+and their main reconstruction challenges}}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Case ID}}
+\textbf{Case ID}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Scene}}
+\textbf{Scene}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Architectural characteristics}}
+\textbf{Architectural characteristics}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Main reconstruction challenges}}
+\textbf{Main reconstruction challenges}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Relevance to comparative evaluation}}
+\textbf{Relevance to comparative evaluation}
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Case ID}}
+\textbf{Case ID}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Scene}}
+\textbf{Scene}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Architectural characteristics}}
+\textbf{Architectural characteristics}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Main reconstruction challenges}}
+\textbf{Main reconstruction challenges}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Relevance to comparative evaluation}}
+\textbf{Relevance to comparative evaluation}
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\hl{DDT-01} & \hl{Chaoli Drum Tower} & \hl{Multi-layered timber tower
-with complex roof hierarchy} & \hl{Large viewpoint discontinuities;
-unstable test-view construction; shadowed eave regions} & \hl{Testing
-robustness under difficult acquisition conditions} \\
-\hl{DDT-02} & \hl{Congjiang Drum Tower} & \hl{Distinct external geometry
-with relatively regular overall form} & \hl{Repetitive timber textures;
-local detail preservation} & \hl{Comparing rendering fidelity and
-texture reconstruction} \\
-\hl{DDT-03} & \hl{Zeli Drum Tower} & \hl{Strongly layered roof structure
-with repeated eave patterns} & \hl{Repeated roof geometry; depth
-ambiguity between eave layers} & \hl{Evaluating structural consistency
-in complex roof regions} \\
-\hl{DDT-04} & \hl{Zengchong Drum Tower} & \hl{Dense multi-eave geometry
-with rich timber details} & \hl{Dense components; high-frequency detail
-preservation; shadowed regions} & \hl{Testing detail reconstruction and
-rendering robustness} \\
+DDT-01 & Chaoli Drum Tower & Multi-layered timber tower
+with complex roof hierarchy & Large viewpoint discontinuities;
+unstable test-view construction; shadowed eave regions & Testing
+robustness under difficult acquisition conditions \\
+DDT-02 & Congjiang Drum Tower & Distinct external geometry
+with relatively regular overall form & Repetitive timber textures;
+local detail preservation & Comparing rendering fidelity and
+texture reconstruction \\
+DDT-03 & Zeli Drum Tower & Strongly layered roof structure
+with repeated eave patterns & Repeated roof geometry; depth
+ambiguity between eave layers & Evaluating structural consistency
+in complex roof regions \\
+DDT-04 & Zengchong Drum Tower & Dense multi-eave geometry
+with rich timber details & Dense components; high-frequency detail
+preservation; shadowed regions & Testing detail reconstruction and
+rendering robustness \\
 \end{longtable}
 
-\subsection{\texorpdfstring{\hl{3.1 UAV Data Acquisition and Image
+\subsection{3.1 UAV Data Acquisition and Image
 Corpus
-Construction}}{3.1 UAV Data Acquisition and Image Corpus Construction}}\label{uav-data-acquisition-and-image-corpus-construction}
+Construction}\label{uav-data-acquisition-and-image-corpus-construction}
 
 UAV images were acquired using a DJI Air 2S platform equipped with its
 integrated camera sensor. The acquisition strategy was designed to
@@ -200,7 +394,7 @@ scene-level organization. The Chaoli scene has no independent test image
 under the current LLFF-style split.
 \end{quote}
 
-\section{3.2 Empirical Point-Cloud and Reconstruction Corpus
+\section{2 Empirical Point-Cloud and Reconstruction Corpus
 Construction}\label{empirical-point-cloud-and-reconstruction-corpus-construction}
 
 The UAV data were further processed to construct an empirical corpus for
@@ -220,8 +414,8 @@ missing regions, and reconstruction difficulty. They are used as spatial
 references for corpus description, but not as independent geometric
 ground truth for metric accuracy evaluation.
 
-\textbf{\hl{Table 4. Summary statistics of the UAV-derived point-cloud
-datasets}}
+\textbf{Table 4. Summary statistics of the UAV-derived point-cloud
+datasets}
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0689}}
