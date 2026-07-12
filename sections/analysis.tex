@@ -2,12 +2,12 @@
 \section{Analysis and Discussion}
 \label{sec:analysis}
 
-\section{\texorpdfstring{\hl{5. Results}}{5. Results}}\label{results}
+\section{Results}\label{results}
 
-\subsection{\texorpdfstring{\hl{5.1 Quantitative
-Overview}}{5.1 Quantitative Overview}}\label{quantitative-overview}
+\subsection{5.1 Quantitative
+Overview}\label{quantitative-overview}
 
-\hl{The quantitative results reveal clear performance differences among
+The quantitative results reveal clear performance differences among
 the four reconstruction methods across the selected Dong drum tower
 scenes. As shown in Fig. 7, 3DGS achieved the highest average PSNR and
 SSIM values, reaching \textbf{31.60 dB} and \textbf{0.924},
@@ -15,16 +15,16 @@ respectively. This indicates that 3DGS provided the strongest overall
 image fidelity and structural similarity under the current experimental
 setting. In contrast, INGP achieved the lowest average LPIPS value of
 \textbf{0.075}, suggesting superior perceptual similarity in terms of
-deep-feature-based visual distance.}
+deep-feature-based visual distance.
 
-\hl{NeRF produced relatively stable but moderate results across the four
+NeRF produced relatively stable but moderate results across the four
 scenes, while 2DGS showed substantially weaker image-rendering
 performance under the current configuration. It should be noted that
 these quantitative results primarily reflect image-level rendering
 quality. They do not, by themselves, fully represent geometric accuracy
 or conservation usability. Therefore, the following sections further
 interpret the results in relation to architectural readability and
-conservation-relevant components.}
+conservation-relevant components.
 
 As shown in Fig. 7, the quantitative results reveal clear differences
 among the four reconstruction methods across the selected Dong drum
@@ -51,29 +51,34 @@ reconstruction. These findings suggest that method performance should be
 interpreted in relation to conservation-oriented tasks rather than as a
 single universal ranking.
 
-\includegraphics[width=6.68542in,height=8.91458in]{figures/media/image9.png}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image9}
+    \label{fig:pandoc_9}
+\end{figure}
 
-\textbf{\hl{Fig. 7. Quantitative comparison of reconstruction quality
-across four Dong drum tower scenes.}}\\
-\hl{(a) PSNR comparison. (b) SSIM comparison. (c) LPIPS comparison.
+
+\textbf{Fig. 7. Quantitative comparison of reconstruction quality
+across four Dong drum tower scenes.}\\
+(a) PSNR comparison. (b) SSIM comparison. (c) LPIPS comparison.
 Higher PSNR and SSIM values indicate better reconstruction fidelity and
 structural similarity, whereas lower LPIPS values indicate better
-perceptual similarity.}
+perceptual similarity.
 
 \subsection{}\label{section}
 
-\subsection{\texorpdfstring{\hl{5.2 Visual Comparison Across
+\subsection{5.2 Visual Comparison Across
 Architectural
-Components}}{5.2 Visual Comparison Across Architectural Components}}\label{visual-comparison-across-architectural-components}
+Components}\label{visual-comparison-across-architectural-components}
 
-\hl{To complement the image-level metrics, visual comparison was
+To complement the image-level metrics, visual comparison was
 conducted using representative architectural views, including the base,
 tower enclosure, main body, tower tip, and panoramic view. This analysis
 helps translate quantitative rendering performance into
 conservation-relevant interpretation by examining whether reconstructed
-outputs preserve the readability of architectural components.}
+outputs preserve the readability of architectural components.
 
-\hl{The visual comparison indicates that 3DGS produced the most
+The visual comparison indicates that 3DGS produced the most
 consistent reconstruction behavior across the examined architectural
 views. Its outputs better preserved the overall tower silhouette,
 layered roof organization, and continuity of dense timber components.
@@ -85,13 +90,13 @@ texture-rich regions. NeRF generated relatively stable but smoother
 renderings, with weaker recovery of high-frequency architectural
 details. Under the current setting, 2DGS showed more visible instability
 in color consistency, structural continuity, and local component
-preservation.}
+preservation.
 
-\hl{To avoid overclaiming, the component-level assessment in Table 14 is
+To avoid overclaiming, the component-level assessment in Table 14 is
 reported as a structured qualitative interpretation rather than an
 independent quantitative measurement. The assessment is based on
 representative rendered views and the observed consistency between
-global quantitative performance and local architectural readability.}
+global quantitative performance and local architectural readability.
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1401}}
@@ -100,70 +105,70 @@ global quantitative performance and local architectural readability.}
   >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1550}}
   >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1585}}
   >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1357}}@{}}
-\caption{\textbf{\hl{Table 14. Component-level detail
-assessment}}}\tabularnewline
+\caption{\textbf{Table 14. Component-level detail
+assessment}}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Architectural part}}
+\textbf{Architectural part}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Feature description}}
+\textbf{Feature description}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{3DGS}}
+\textbf{3DGS}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{INGP}}
+\textbf{INGP}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{NeRF}}
+\textbf{NeRF}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{2DGS}}
+\textbf{2DGS}
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Architectural part}}
+\textbf{Architectural part}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Feature description}}
+\textbf{Feature description}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{3DGS}}
+\textbf{3DGS}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{INGP}}
+\textbf{INGP}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{NeRF}}
+\textbf{NeRF}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{2DGS}}
+\textbf{2DGS}
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\hl{Base} & \hl{Masonry base with relatively regular texture} &
-\hl{Excellent; clear texture} & \hl{Good; complete details} &
-\hl{Moderate; slightly blurred} & \hl{Poor; color shift} \\
-\hl{Tower enclosure} & \hl{Timber enclosure with repetitive textures} &
-\hl{Excellent; clear layering} & \hl{Good; sharp edges} & \hl{Moderate;
-detail loss} & \hl{Poor; structural loss} \\
-\hl{Main body} & \hl{Multi-layered flying eaves with complex occlusion}
-& \hl{Excellent; occlusion handled well} & \hl{Good; occasional
-penetrations} & \hl{Moderate; floating artifacts} & \hl{Poor; severe
-distortion} \\
-\hl{Tower tip} & \hl{Sharp geometry with high-frequency details} &
-\hl{Excellent; sharp outline} & \hl{Good; slightly blurred} &
-\hl{Moderate; geometric distortion} & \hl{Poor; shape loss} \\
-\hl{Panorama} & \hl{Overall appearance and sky/background relationship}
-& \hl{Excellent; strong realism} & \hl{Good; accurate tonal balance} &
-\hl{Moderate; background artifacts} & \hl{Poor; large-area
-distortion} \\
+Base & Masonry base with relatively regular texture &
+Excellent; clear texture & Good; complete details &
+Moderate; slightly blurred & Poor; color shift \\
+Tower enclosure & Timber enclosure with repetitive textures &
+Excellent; clear layering & Good; sharp edges & Moderate;
+detail loss & Poor; structural loss \\
+Main body & Multi-layered flying eaves with complex occlusion
+& Excellent; occlusion handled well & Good; occasional
+penetrations & Moderate; floating artifacts & Poor; severe
+distortion \\
+Tower tip & Sharp geometry with high-frequency details &
+Excellent; sharp outline & Good; slightly blurred &
+Moderate; geometric distortion & Poor; shape loss \\
+Panorama & Overall appearance and sky/background relationship
+& Excellent; strong realism & Good; accurate tonal balance &
+Moderate; background artifacts & Poor; large-area
+distortion \\
 \end{longtable}
 
-\hl{For interpretive consistency, qualitative grades were used as
+For interpretive consistency, qualitative grades were used as
 heuristic labels: Excellent (PSNR \textgreater{} 30, SSIM \textgreater{}
 0.90), Good (PSNR 27-30, SSIM 0.85-0.90), Moderate (PSNR 25-27, SSIM
 0.80-0.85), and Poor (PSNR \textless{} 25, SSIM \textless{} 0.80). These
 labels are not independent per-component measurements; rather, they
 provide a structured interpretation of the quantitative and visual
-results at the architectural-component level.}
+results at the architectural-component level.
 
-\hl{The component-level comparison supports the quantitative findings.
+The component-level comparison supports the quantitative findings.
 3DGS is more suitable for preserving architectural readability in
 layered timber structures, particularly where eave hierarchy, roof-crown
 contours, and timber-frame continuity are important. INGP remains
@@ -173,9 +178,9 @@ effective in recovering fine architectural details. The weaker
 image-level and visual performance of 2DGS under the present setting
 should not be interpreted as a general failure of the method; rather, it
 suggests that geometry-oriented evaluation metrics may be needed to
-fully assess its potential for surface-based heritage documentation.}
+fully assess its potential for surface-based heritage documentation.
 
-\hl{In summary, the quantitative and visual results indicate that 3DGS
+In summary, the quantitative and visual results indicate that 3DGS
 provides the strongest overall reconstruction performance for the
 selected Dong drum tower scenes in terms of PSNR, SSIM, and
 component-level architectural readability. INGP achieves the best
@@ -183,18 +188,18 @@ average LPIPS and remains competitive for perceptual visualization and
 efficient reconstruction. NeRF performs consistently but with moderate
 fidelity and lower efficiency. 2DGS underperforms in the current
 image-level rendering evaluation, but its surface-oriented formulation
-remains relevant for future geometry-focused assessment.}
+remains relevant for future geometry-focused assessment.
 
-\hl{These results provide the basis for the subsequent discussion, where
+These results provide the basis for the subsequent discussion, where
 method performance is interpreted not only as an algorithmic ranking but
 also in relation to conservation tasks such as high-fidelity
 documentation, rapid field reconstruction, HBIM preparation, digital
-exhibition, restoration survey, and periodic monitoring.}
+exhibition, restoration survey, and periodic monitoring.
 
-\subsection{\texorpdfstring{\hl{5.3 Visual Comparison of Rendering
-Results}}{5.3 Visual Comparison of Rendering Results}}\label{visual-comparison-of-rendering-results}
+\subsection{5.3 Visual Comparison of Rendering
+Results}\label{visual-comparison-of-rendering-results}
 
-\hl{To complement the quantitative evaluation, visual comparisons were
+To complement the quantitative evaluation, visual comparisons were
 conducted for the four Dong drum tower scenes, as shown in \textbf{Figs.
 8--11}. For each scene, five representative architectural views were
 selected, including the base, tower enclosure, main body, tower tip, and
@@ -204,9 +209,9 @@ cross-method and cross-scene comparison. This visual analysis is
 intended to connect the numerical metrics with architecturally
 meaningful features, such as multi-layered eaves, timber-frame
 boundaries, roof contours, stone bases, tower tips, and shadowed
-regions.}
+regions.
 
-\hl{Across the four scenes, 3DGS consistently produced the strongest
+Across the four scenes, 3DGS consistently produced the strongest
 overall visual realism and geometric coherence. Its advantage was most
 evident in the reconstruction of multi-layered eaves, roof contours, and
 repetitive timber-frame structures. INGP often generated sharper
@@ -215,20 +220,25 @@ textured surface regions. NeRF produced comparatively conservative
 renderings: although its outputs showed lower detail sharpness, they
 exhibited fewer severe structural failures than 2DGS. Under the current
 experimental configuration, 2DGS showed noticeable color distortion,
-texture blurring, and structural degradation in several scenes.}
+texture blurring, and structural degradation in several scenes.
 
-\includegraphics[width=6.625in,height=3.49792in]{figures/media/image10.png}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image10}
+    \label{fig:pandoc_10}
+\end{figure}
 
-\hl{\textbf{Fig. 8. Visual comparison of rendered results for Chaoli
+
+\textbf{Fig. 8. Visual comparison of rendered results for Chaoli
 Drum Tower.}\\
 Rows correspond to 3DGS, 2DGS, INGP, and NeRF, respectively; columns
 show representative architectural views, including the base, tower
 enclosure, main body, tower tip, and panoramic view. The Chaoli scene
 contains large viewpoint discontinuities and shadowed eave regions,
 making it suitable for evaluating robustness under difficult acquisition
-conditions.}
+conditions.
 
-\hl{In the Chaoli scene (\textbf{Fig.8}), 3DGS achieved the highest PSNR
+In the Chaoli scene (\textbf{Fig.8}), 3DGS achieved the highest PSNR
 and SSIM values, reaching 33.53 dB and 0.950, respectively. Its rendered
 results show clearly visible timber-beam textures, sharp roof-edge
 contours, and relatively well-preserved stone-base details. INGP
@@ -237,19 +247,24 @@ structural organization, but slight blurring remained in high-frequency
 regions such as the tower tip. NeRF obtained a PSNR of 26.52 dB, and its
 renderings appeared relatively foggy, especially in distant regions.
 2DGS showed the weakest visual performance in this scene, with evident
-color distortion and geometric deformation.}
+color distortion and geometric deformation.
 
-\includegraphics[width=6.625in,height=3.49167in]{figures/media/image11.png}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image11}
+    \label{fig:pandoc_11}
+\end{figure}
 
-\hl{\textbf{Fig. 9. Visual comparison of rendered results for Zeli Drum
+
+\textbf{Fig. 9. Visual comparison of rendered results for Zeli Drum
 Tower.}\\
 Rows correspond to 3DGS, 2DGS, INGP, and NeRF, respectively; columns
 show the base, tower enclosure, main body, tower tip, and panoramic
 view. The Zeli scene is characterized by repeated eave layers and strong
 roof-depth relationships, providing a representative case for evaluating
-structural consistency in complex roof regions.}
+structural consistency in complex roof regions.
 
-\hl{In the Zeli scene (\textbf{Fig. 9}), 3DGS achieved a PSNR of 31.94
+In the Zeli scene (\textbf{Fig. 9}), 3DGS achieved a PSNR of 31.94
 dB and showed clear advantages in preserving the layered enclosure and
 repeated eave structures. The roof tiers were visually separable, and
 the timber surface textures remained relatively coherent. INGP obtained
@@ -259,20 +274,25 @@ advantage was especially visible in detail-rich timber regions. NeRF
 achieved a PSNR of 27.08 dB and produced acceptable results for the main
 building body, but floating artifacts appeared near the transition
 between the building boundary and the sky background. 2DGS obtained a
-PSNR of 19.38 dB and showed texture blurring and color-shift artifacts.}
+PSNR of 19.38 dB and showed texture blurring and color-shift artifacts.
 
-\includegraphics[width=6.625in,height=3.51111in]{figures/media/image12.png}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image12}
+    \label{fig:pandoc_12}
+\end{figure}
 
-\hl{\textbf{Fig. 10. Visual comparison of rendered results for Zengchong
+
+\textbf{Fig. 10. Visual comparison of rendered results for Zengchong
 Drum Tower.}\\
 Rows correspond to 3DGS, 2DGS, INGP, and NeRF, respectively; columns
 show representative views of the base, tower enclosure, main body, tower
 tip, and panoramic appearance. The Zengchong scene contains dense
 multi-layered eave geometry and rich timber details, making it a
 challenging case for evaluating detail reconstruction and rendering
-robustness.}
+robustness.
 
-\hl{In the Zengchong scene (\textbf{Fig. 10}), 3DGS showed one of its
+In the Zengchong scene (\textbf{Fig. 10}), 3DGS showed one of its
 strongest performances. Its LPIPS value reached 0.058, the best
 scene-level perceptual result among all evaluated cases. The rendered
 images indicate that 3DGS reconstructed the dense multi-eave structure
@@ -282,19 +302,24 @@ competitively, with a PSNR of 28.36 dB and an LPIPS value of 0.064,
 showing only a small perceptual gap from 3DGS. NeRF achieved a PSNR of
 26.83 dB but exhibited slight geometric distortion near the tower tip.
 2DGS performed poorly in this scene, with an SSIM of only 0.378 and
-visible structural loss.}
+visible structural loss.
 
-\includegraphics[width=6.625in,height=3.46458in]{figures/media/image13.png}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image13}
+    \label{fig:pandoc_13}
+\end{figure}
 
-\hl{\textbf{Fig. 11. Visual comparison of rendered results for Congjiang
+
+\textbf{Fig. 11. Visual comparison of rendered results for Congjiang
 Drum Tower.}\\
 Rows correspond to 3DGS, 2DGS, INGP, and NeRF, respectively; columns
 show the base, tower enclosure, main body, tower tip, and panoramic
 view. Compared with the other scenes, Congjiang has relatively clear
 external geometry but still presents challenges in repetitive timber
-textures and local detail preservation.}
+textures and local detail preservation.
 
-\hl{In the Congjiang scene (\textbf{Fig. 11}), INGP achieved the lowest
+In the Congjiang scene (\textbf{Fig. 11}), INGP achieved the lowest
 LPIPS value of 0.080, outperforming 3DGS in perceptual texture quality.
 Visual inspection suggests that INGP preserved the stone texture of the
 base more delicately. Although 3DGS achieved a higher PSNR value of
@@ -303,9 +328,9 @@ NeRF obtained a PSNR of 27.56 dB, its highest value among the four
 scenes, and produced relatively stable renderings. 2DGS achieved a PSNR
 of 23.11 dB, performing better in Congjiang than in the other three
 scenes, which may be related to the relatively lower geometric
-complexity of this case.}
+complexity of this case.
 
-\hl{Overall, the visual comparison supports four observations. First,
+Overall, the visual comparison supports four observations. First,
 3DGS provides the most consistent reconstruction of geometric structure
 and overall realism, especially in complex regions such as dense layered
 eaves, upturned roof edges, and roof-contour areas. Second, INGP shows a
@@ -316,17 +341,17 @@ recovery but fewer severe distortions than 2DGS. Fourth, 2DGS does not
 achieve satisfactory rendering quality under the current configuration;
 its potential value should be interpreted more cautiously in relation to
 future geometry-oriented evaluation rather than current visual-quality
-metrics alone.}
+metrics alone.
 
-\subsection{\texorpdfstring{\hl{5.4 Computational Efficiency and
+\subsection{5.4 Computational Efficiency and
 Resource
-Consumption}}{5.4 Computational Efficiency and Resource Consumption}}\label{computational-efficiency-and-resource-consumption}
+Consumption}\label{computational-efficiency-and-resource-consumption}
 
-\hl{In addition to rendering quality, computational efficiency is a
+In addition to rendering quality, computational efficiency is a
 critical consideration for digital heritage applications (\textbf{Fig.
 12}). Heritage institutions often operate under limited computational
 budgets, and efficient methods are therefore more suitable for rapid
-documentation, iterative reconstruction, and field-based workflows.}
+documentation, iterative reconstruction, and field-based workflows.
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1136}}
@@ -334,61 +359,66 @@ documentation, iterative reconstruction, and field-based workflows.}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1765}}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2063}}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2428}}@{}}
-\caption{\textbf{\hl{Table 15. Training efficiency and resource
-consumption}}}\tabularnewline
+\caption{\textbf{Table 15. Training efficiency and resource
+consumption}}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Method}}
+\textbf{Method}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Average training time}}
+\textbf{Average training time}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{GPU memory}}
+\textbf{GPU memory}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Rendering speed}}
+\textbf{Rendering speed}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Real-time rendering}}
+\textbf{Real-time rendering}
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Method}}
+\textbf{Method}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Average training time}}
+\textbf{Average training time}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{GPU memory}}
+\textbf{GPU memory}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Rendering speed}}
+\textbf{Rendering speed}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Real-time rendering}}
+\textbf{Real-time rendering}
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\hl{NeRF} & \hl{\textasciitilde6 h} & \hl{\textasciitilde8 GB} &
-\hl{Slow, \textasciitilde0.5 FPS} & \hl{No} \\
-\hl{2DGS} & \hl{\textasciitilde20 min} & \hl{\textasciitilde6 GB} &
-\hl{Medium, \textasciitilde5 FPS} & \hl{No} \\
-\hl{3DGS} & \hl{\textasciitilde20 min} & \hl{\textasciitilde12 GB} &
-\hl{Fast, \textgreater=100 FPS} & \hl{Yes} \\
-\hl{INGP} & \textbf{\hl{\textasciitilde5 min}} & \hl{\textasciitilde4
-GB} & \hl{Fast, \textgreater=60 FPS} & \hl{Yes} \\
+NeRF & \textasciitilde6 h & \textasciitilde8 GB &
+Slow, \textasciitilde0.5 FPS & No \\
+2DGS & \textasciitilde20 min & \textasciitilde6 GB &
+Medium, \textasciitilde5 FPS & No \\
+3DGS & \textasciitilde20 min & \textasciitilde12 GB &
+Fast, \textgreater=100 FPS & Yes \\
+INGP & \textbf{\textasciitilde5 min} & \textasciitilde4
+GB & Fast, \textgreater=60 FPS & Yes \\
 \end{longtable}
 
-\hl{NeRF training time varied because some scenes experienced
+NeRF training time varied because some scenes experienced
 interruptions; a complete training process would generally require more
-than 6 h. FPS values were measured on an NVIDIA RTX 4090 GPU.}
+than 6 h. FPS values were measured on an NVIDIA RTX 4090 GPU.
 
 \begin{figure}
 \centering
-\includegraphics[width=4.22639in,height=2.99236in]{figures/media/image14.png}
-\caption{\textbf{\hl{Fig. 12. Training time and rendering speed
-comparison. INGP is highlighted for training efficiency, while 3DGS is
-emphasized for real-time rendering.}}}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/media/image14}
+    \label{fig:pandoc_14}
 \end{figure}
 
-\hl{The efficiency comparison shows that INGP has the strongest
+\caption{\textbf{Fig. 12. Training time and rendering speed
+comparison. INGP is highlighted for training efficiency, while 3DGS is
+emphasized for real-time rendering.}}
+\end{figure}
+
+The efficiency comparison shows that INGP has the strongest
 advantage in training speed, requiring only about 5 minutes on average.
 3DGS provides the best rendering speed, achieving real-time performance
 at no less than 100 FPS, which is advantageous for interactive
@@ -396,19 +426,19 @@ visualization and immersive heritage applications. Although 2DGS
 requires a training time comparable to that of 3DGS, its rendering speed
 remains limited to about 5 FPS under the current setting. NeRF is the
 least efficient method, requiring several hours of training while also
-yielding the slowest rendering speed.}
+yielding the slowest rendering speed.
 
-\subsection{\texorpdfstring{\hl{5.5Geometry-Oriented
-Interpretation}}{5.5Geometry-Oriented Interpretation}}\label{geometry-oriented-interpretation}
+\subsection{5.5Geometry-Oriented
+Interpretation}\label{geometry-oriented-interpretation}
 
-\hl{Because the current study does not include high-precision reference
+Because the current study does not include high-precision reference
 geometry such as terrestrial laser scanning or independently validated
 meshes, a fully quantitative geometric evaluation could not be
 performed. In particular, cloud-to-cloud distance, cloud-to-mesh
 distance, Chamfer distance, and Hausdorff distance are not reported in
 this version. The present benchmark should therefore be interpreted
 primarily as an image-quality and efficiency comparison rather than a
-definitive geometric ranking.}
+definitive geometric ranking.
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0721}}
@@ -416,61 +446,61 @@ definitive geometric ranking.}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1944}}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2446}}
   >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2778}}@{}}
-\caption{\textbf{\hl{Table 16. Geometry-oriented characteristics of the
-four methods}}}\tabularnewline
+\caption{\textbf{Table 16. Geometry-oriented characteristics of the
+four methods}}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Method}}
+\textbf{Method}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Geometric representation}}
+\textbf{Geometric representation}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Surface extraction strategy}}
+\textbf{Surface extraction strategy}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Applicable geometric evaluation}}
+\textbf{Applicable geometric evaluation}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Remarks}}
+\textbf{Remarks}
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Method}}
+\textbf{Method}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Geometric representation}}
+\textbf{Geometric representation}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Surface extraction strategy}}
+\textbf{Surface extraction strategy}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Applicable geometric evaluation}}
+\textbf{Applicable geometric evaluation}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Remarks}}
+\textbf{Remarks}
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\hl{NeRF} & \hl{Implicit density field} & \hl{Marching Cubes} &
-\hl{Mesh-based evaluation possible} & \hl{Requires density-threshold
-selection} \\
-\hl{3DGS} & \hl{Explicit 3D Gaussians} & \hl{Gaussian-center point
-cloud} & \hl{Point-cloud comparison} & \hl{Not inherently watertight} \\
-\hl{2DGS} & \hl{Explicit 2D disk-like Gaussians} & \hl{Depth-map fusion}
-& \hl{High surface-reconstruction potential} & \hl{Designed with
-geometric accuracy in mind} \\
-\hl{INGP} & \hl{Implicit hash-encoded field} & \hl{Marching Cubes} &
-\hl{Mesh-based evaluation possible} & \hl{Extraction resolution is
-adjustable} \\
+NeRF & Implicit density field & Marching Cubes &
+Mesh-based evaluation possible & Requires density-threshold
+selection \\
+3DGS & Explicit 3D Gaussians & Gaussian-center point
+cloud & Point-cloud comparison & Not inherently watertight \\
+2DGS & Explicit 2D disk-like Gaussians & Depth-map fusion
+& High surface-reconstruction potential & Designed with
+geometric accuracy in mind \\
+INGP & Implicit hash-encoded field & Marching Cubes &
+Mesh-based evaluation possible & Extraction resolution is
+adjustable \\
 \end{longtable}
 
-\hl{This limitation is important when interpreting the performance of
+This limitation is important when interpreting the performance of
 2DGS. Although 2DGS is clearly weaker than 3DGS in image-based metrics,
 its 2D disk-like Gaussian formulation is, in principle, better aligned
 with object surfaces and may therefore be more suitable for applications
 that prioritize geometric fidelity rather than rendering realism. This
 possibility cannot be confirmed or rejected in the absence of
-independent geometric ground truth.}
+independent geometric ground truth.
 
-\section{\texorpdfstring{\textbf{6.}
-\hl{Discussion}}{6. Discussion}}\label{discussion}
+\section{\textbf{6.}
+Discussion}\label{discussion}
 
 \subsection{6.1 Conservation-oriented
 interpretation}\label{conservation-oriented-interpretation}
@@ -513,3 +543,4 @@ UAV-based neural reconstruction should complement, not replace,
 established documentation workflows. Tasks involving measurement,
 deformation analysis, structural diagnosis, or material condition
 assessment still require geometric validation and expert interpretation.
+
