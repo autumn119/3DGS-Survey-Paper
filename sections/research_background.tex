@@ -90,14 +90,14 @@ challenges for digital reconstruction. Classical registration and
 model-fitting methods, such as ICP and RANSAC, provide essential support
 for 3D alignment and geometric robustness, but they do not directly
 address the view-synthesis and rendering challenges posed by complex
-heritage scenes [28,29]. Existing-building BIM reconstruction and
+heritage scenes	\cite{besl1992icp,fischler1981ransac}. Existing-building BIM reconstruction and
 large-scale 3D modeling studies have shown that complex heritage
 environments often require the integration of point-cloud processing,
-semantic enrichment, and object-based interpretation [30--32].
+semantic enrichment, and object-based interpretation\cite{tang2010automatic,volk2014bim,fassi2013comparison}.
 Knowledge-based HBIM enrichment and mesh-based information modeling
 further indicate that high-quality reconstruction is not only a visual
 task, but also a prerequisite for semantic representation and downstream
-conservation use [33,34]. For Dong drum towers, these challenges are
+conservation use\cite{quattrini2017knowledge,yang2019hbim}. For Dong drum towers, these challenges are
 amplified by multi-layered eaves, repeated roof geometries, dense timber
 components, roof-crown details, and heavily shaded spaces beneath the
 eaves.
@@ -108,39 +108,39 @@ Documentation}\label{related-work-on-neural-reconstruction-and-heritage-document
 Recent advances in neural rendering have opened new possibilities for
 the digital reconstruction of complex heritage scenes. Local Light Field
 Fusion provided an early practical framework for view synthesis with
-prescribed sampling strategies [35]. Neural Radiance Fields
+prescribed sampling strategies\cite{mildenhall2019llff}. Neural Radiance Fields
 demonstrated that scene geometry and appearance can be jointly encoded
 as a continuous radiance field for high-quality novel-view synthesis
-[36]. Mip-NeRF and Mip-NeRF 360 further improved anti-aliasing and
+\cite{mildenhall2022nerf}. Mip-NeRF and Mip-NeRF 360 further improved anti-aliasing and
 unbounded-scene rendering, making neural scene representation more
-robust in real-world environments [37,38]. Instant-NGP greatly
+robust in real-world environments\cite{barron2021mipnerf,barron2022mipnerf360}. Instant-NGP greatly
 reduced training cost through multiresolution hash encoding, improving
-the practicality of neural rendering workflows [39]. More recently,
+the practicality of neural rendering workflows\cite{muller2022instantngp}. More recently,
 3D Gaussian Splatting achieved real-time radiance-field rendering with
-strong visual fidelity [40], while 2D Gaussian Splatting emphasized
-a more geometrically oriented surface representation [41].
+strong visual fidelity\cite{kerbl2023gaussiansplatting}, while 2D Gaussian Splatting emphasized
+a more geometrically oriented surface representation\cite{huang2024_2dgs}.
 Extensions such as GS-SLAM and deformable 3D Gaussians have further
 demonstrated the broader applicability of Gaussian-based representations
-to dense SLAM and dynamic-scene reconstruction [42,43].
+to dense SLAM and dynamic-scene reconstruction\cite{yan2024gsslam,yang2024deformable3dgs}.
 
 In image-based rendering tasks, PSNR, SSIM, and LPIPS are widely used to
 measure pixel-level fidelity, structural similarity, and perceptual
-similarity, respectively [44,45]. These metrics provide a useful
+similarity, respectively\cite{wang2004ssim,zhang2018lpips}. These metrics provide a useful
 basis for comparing rendered views with reference images, but they do
 not fully capture the conservation value of reconstructed outputs. For
 architectural heritage, especially complex timber structures,
 reconstruction quality must also be interpreted in relation to component
 readability, structural continuity, and downstream documentation tasks.
 Research on 3D point clouds has similarly highlighted the importance of
-geometry-aware interpretation and downstream spatial understanding
-[46].
+geometry-aware interpretation and downstream spatial understanding\cite{guo2021deeplearning3d}.
 
 Despite these advances, the applicability of neural reconstruction
 methods to complex timber heritage remains insufficiently examined. Most
 existing studies on Dong drum towers have focused on sound-field
 simulation, mathematical modeling, UAV-based documentation, or
 HBIM-oriented modeling, rather than controlled cross-method evaluation
-under the same empirical heritage dataset [9--12]. As a result, it
+under the same empirical heritage dataset\cite{mao2023soundfield,deng2021metamodeling,huang2024digital,deng2025hbim}
+. As a result, it
 remains unclear how NeRF-, Gaussian-, and hash-encoding-based methods
 behave when processing multi-eave timber structures with repeated
 components, occluded spaces, and strong illumination variation. More
