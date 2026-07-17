@@ -23,8 +23,6 @@ pdflatex main
 
 ```
 3DGS-Survey-Paper/
-├── main.tex                 # Main LaTeX file
-├── references.bib           # BibTeX references
 ├── sections/                # Per-section .tex files
 │   ├── abstract.tex
 │   ├── introduction.tex
@@ -33,14 +31,29 @@ pdflatex main
 │   ├── method.tex
 │   ├── analysis.tex
 │   └── conclusion.tex
-├── figures/                 # All paper figures (PDF/EPS)
+├── figures/media                # All paper figures (PDF/EPS)
+│   ├── image1.png
+│   ├── image2.png
+│   ├── image3.png
+│   ├── ....
+│   ├── image10.png
+│   ├── ....
+│   └── image14.png     
 ├── supplementary/           # Supplementary material
 ├── .gitignore               # Ignores LaTeX build artifacts
+├── CITATION.cff             # Citation metadata
+├── main.tex                 # Main LaTeX file
+├── references.bib           # BibTeX references
 ├── Makefile                 # Build automation
 ├── CITATION.cff             # Citation metadata
-└── LICENSE                  # CC-BY-4.0
-```
-
+├── IEEtarn.bst
+├── IEEtrancls
+├── LICENSE                  # CC-BY-4.0
+├── Makefile
+├── README.md
+├── abstract.tex
+├── main.tex                 # Main LaTeX file
+└──references.bib
 ## Related Repositories
 
 | Repository | Description |
