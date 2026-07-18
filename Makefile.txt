@@ -1,0 +1,48 @@
+# ============================================================
+# Makefile — 3DGS Survey Paper compilation script
+# 用法:
+#   make
+#   make clean
+#   make cleanall
+#   make view
+# ============================================================
+
+TEX      = main
+LATEX    = pdflatex
+BIBTEX   = bibtex
+
+# ---- Cross-platform detection (viewer + delete command) ----
+ifeq ($(OS),Windows_NT)
+    VIEWER = cmd //c start ""
+    RM     = del /Q /F
+else
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Darwin)
+        VIEWER = open
+    else
+        VIEWER = xdg-open
+    endif
+    RM = rm -f
+endif
+
+.PHONY: all clean cleanall view
+
+all: $(TEX).pdf
+
+$(TEX).pdf: $(TEX).tex
+	$(LATEX) -interaction=nonstopmode $(TEX)
+	$(BIBTEX) $(TEX)
+	$(LATEX) -interaction=nonstopmode $(TEX)
+	$(LATEX) -interaction=nonstopmode $(TEX)
+
+view: $(TEX).pdf
+	$(VIEWER) $(TEX).pdf
+
+clean:
+	-$(RM) *.aux *.log *.out *.bbl *.blg *.synctex.gz
+	-$(RM) *.fls *.fdb_latexmk *.toc *.lof *.lot
+	-$(RM) *.nav *.snm *.vrb *.idx *.ilg *.ind
+	-$(RM) *.bcf *.run.xml *.xml *.xdv *.dvi
+
+cleanall: clean
+	-$(RM) *.pdf
