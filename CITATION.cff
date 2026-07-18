@@ -7,7 +7,7 @@ authors:
 title: "UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection"
 version: 1.0.0
 date-released: 2026-07-09
-url: "https://github.com/autumn119/3DGS-Survey-Paper"
+url: "https://github.com/autumn119/UAV-DDT-HeritageBench"
 repository-code: "https://github.com/autumn119/UAV-DDT-HeritageBench"
 doi: "10.5281/zenodo.20263999"
 license: CC-BY-4.0
