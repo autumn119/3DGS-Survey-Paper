@@ -22,7 +22,7 @@ pdflatex main
 ## Repository Structure
 
 ```
-3DGS-Survey-Paper/
+UAV-DDT-HeritageBench/
 ├── sections/                # Per-section .tex files
 │   ├── abstract.tex
 │   ├── introduction.tex
@@ -40,6 +40,10 @@ pdflatex main
 │   ├── ....
 │   └── image14.png     
 ├── supplementary/           # Supplementary material
+│   ├── .....mp4
+│   ├── .....mp4
+│   ├── .....mp4
+│   └── requirementts.txt 
 ├── .gitignore               # Ignores LaTeX build artifacts
 ├── CITATION.cff             # Citation metadata
 ├── main.tex                 # Main LaTeX file
