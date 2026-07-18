@@ -1,4 +1,4 @@
-# 3DGS-Survey-Paper
+# UAV-DDT-HeritageBench
 
 LaTeX source for: **UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection**
 
