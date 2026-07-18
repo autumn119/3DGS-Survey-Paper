@@ -75,8 +75,7 @@ If you use this work, please cite:
   author  = {Tao, Jiaxing},
   title   = {UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection},
   journal = {IEEE Transactions on Visualization and Computer Graphics},
-  year    = {2026},
-  doi     = {10.1109/TVCG.2026.XXXXXXX}
+  year    = {2026}
 }
 ```
 
