@@ -1,0 +1,8 @@
+# zeli test split  (LLFF-style: every 8th image held out)
+# Replace these filenames with actual image filenames in data/zeli/images/
+IMG_0008.jpg
+IMG_0016.jpg
+IMG_0024.jpg
+IMG_0032.jpg
+IMG_0040.jpg
+IMG_0048.jpg

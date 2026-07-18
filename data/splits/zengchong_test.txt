@@ -1,0 +1,7 @@
+# zengchong test split  (LLFF-style: every 8th image held out)
+# NOTE: if too few images are available, these values serve as reference
+# Replace these filenames with actual image filenames in data/zengchong/images/
+IMG_0008.jpg
+IMG_0016.jpg
+IMG_0024.jpg
+IMG_0032.jpg
