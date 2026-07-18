@@ -59,7 +59,7 @@ pdflatex main
 | Repository | Description |
 |------------|-------------|
 | [3DGS-Survey](https://github.com/autumn119/3DGS-Survey) | Project page (GitHub Pages) |
-| [3DGS-Survey-Taxonomy-Benchmark](https://github.com/autumn119/3DGS-Survey-Taxonomy-Benchmark) | Benchmark code & data |
+| [3DGS-Survey-Taxonomy-Benchmark](https://github.com/autumn119/UAV-DDT-HeritageBench) | Benchmark code & data |
 
 ## Citation
 
