@@ -1,5 +1,5 @@
 # ============================================================
-# Makefile — 3DGS Survey 论文编译脚本
+# Makefile — 3DGS Survey Paper compilation script
 # 用法:
 #   make 
 #   make clean
