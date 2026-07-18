@@ -71,12 +71,12 @@ UAV-DDT-HeritageBench/
 │   │   ├── method.tex
 │   │   ├── analysis.tex
 │   │   └── conclusion.tex
-│   ├── figures/media/      # All paper figures (image1.png … image14.png)
-│   ├── main.tex            # Main LaTeX entry file
-│   ├── references.bib      # BibTeX references
-│   ├── IEEEtran.cls        # IEEE journal document class
-│   ├── IEEEtran.bst        # IEEE BibTeX style
-│   └── Makefile            # Build automation
+├── figures/media/      # All paper figures (image1.png … image14.png)
+├── main.tex            # Main LaTeX entry file
+├── references.bib      # BibTeX references
+├── IEEEtran.cls        # IEEE journal document class
+├── IEEEtran.bst        # IEEE BibTeX style
+├── Makefile            # Build automation
 │
 ├── code/                   # Benchmark code
 │   ├── preprocess/         # Image screening & resize to 1920×1080
