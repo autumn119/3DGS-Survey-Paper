@@ -1,7 +1,7 @@
 # UAV-DDT-HeritageBench
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20263999.svg)](https://doi.org/10.5281/zenodo.20263999)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21429615.svg)](https://doi.org/10.5281/zenodo.21429615)
 
 Manuscript, benchmark code, and dataset for:
 
@@ -171,7 +171,18 @@ If you use this work, please cite:
 }
 ```
 
-Archived dataset: [10.5281/zenodo.20263999](https://doi.org/10.5281/zenodo.20263999)
+The archived dataset can be cited as:
+
+```bibtex
+@dataset{tao2026_dong_drum_tower_dataset,
+  author    = {Tao, Jiaxing},
+  title     = {UAV-DDT-HeritageBench: UAV Imagery and COLMAP Reconstructions of Dong Drum Towers},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21429615},
+  url       = {https://doi.org/10.5281/zenodo.21429615}
+}
+```
 
 ## License
 
