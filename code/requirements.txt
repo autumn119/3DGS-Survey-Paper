@@ -11,8 +11,8 @@ lpips>=0.1.4           # LPIPS (perceptual)
 torch>=2.0.0           # required by lpips
 torchvision>=0.15.0
 
-# NeRF  (TensorFlow backend)
-tensorflow>=2.12.0
+# NeRF uses the PyTorch implementation (bmild/nerf-pytorch style);
+# torch above already covers it. INGP uses its own CUDA build.
 
 # Utilities
 matplotlib>=3.7.0

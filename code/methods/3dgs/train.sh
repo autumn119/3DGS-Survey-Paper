@@ -1,42 +1,37 @@
 #!/usr/bin/env bash
-# methods/3dgs/train.sh
-# Train 3D Gaussian Splatting on one or all scenes.
+# methods/3dgs/train.sh — 3D Gaussian Splatting
+# Repo: graphdeco-inria/gaussian-splatting
+#   clone to $GS3D_ROOT (default /root/autodl-tmp/gaussian-splatting)
 #
-# Usage:  bash train.sh <scene>
-#         bash train.sh all
+# NOTE: 3DGS was NOT yet run on the training server at the time this repo
+#       was assembled. This script reproduces it using the SAME COLMAP
+#       inputs already prepared for 2DGS (shared sparse reconstruction).
 #
-# Requires: graphdeco-inria/gaussian-splatting cloned to $GS3D_ROOT
-#           (default: ~/gaussian-splatting)
-
+# Usage:  bash train.sh <scene|all>
+# Input:  datasets/guloushuju/<scene>/2dgs   (reuses 2DGS COLMAP workspace)
+# Output: output/<scene>/3dgs
 set -euo pipefail
+source "$(dirname "$0")/../../scenes.sh"
 
-SCENES=(chaoli zeli chongjiang zengchong)
-DATA_ROOT="$(dirname "$0")/../../../data"
-GS3D_ROOT="${GS3D_ROOT:-$HOME/gaussian-splatting}"
 ITERS=30000
-RESOLUTION=2      # half resolution (1920×1080 → 960×540)
 
 train_scene() {
-    local SCENE="$1"
-    local SOURCE="${DATA_ROOT}/${SCENE}/dense"
-    local OUTPUT="${DATA_ROOT}/${SCENE}/output/3dgs"
-    echo "===== 3DGS  [${SCENE}] ====="
-    [ -d "$SOURCE" ] || { echo "ERROR: ${SOURCE} not found. Run run_sfm.sh first."; return 1; }
-    mkdir -p "$OUTPUT"
+    local KEY="$1"
+    local SRC; SRC="$(scene_dir "$KEY")/2dgs"    # same COLMAP inputs as 2DGS
+    local OUT="${OUTPUT_ROOT}/${CN_NAME[$KEY]:-$KEY}/3dgs"
+    echo "===== 3DGS  [${KEY}] ====="
+    [ -d "$GS3D_ROOT" ] || { echo "ERROR: clone gaussian-splatting to ${GS3D_ROOT}"; return 1; }
+    [ -d "$SRC" ] || { echo "ERROR: ${SRC} not found"; return 1; }
+    mkdir -p "$OUT"
 
     python "${GS3D_ROOT}/train.py" \
-        -s "$SOURCE" \
-        -m "$OUTPUT" \
-        --iterations "$ITERS" \
-        --resolution  "$RESOLUTION" \
-        --eval
-
-    echo "[${SCENE}] 3DGS training done → ${OUTPUT}"
+        -s "$SRC" -m "$OUT" \
+        --iterations "$ITERS" --resolution -1 --sh_degree 3 --eval
+    python "${GS3D_ROOT}/render.py"  -m "$OUT" --skip_train
+    python "${GS3D_ROOT}/metrics.py" -m "$OUT"
+    echo "[${KEY}] 3DGS done → ${OUT}"
 }
 
-TARGET="${1:-all}"
-if [ "$TARGET" = "all" ]; then
-    for s in "${SCENES[@]}"; do train_scene "$s"; done
-else
-    train_scene "$TARGET"
-fi
+T="${1:-all}"
+if [ "$T" = all ]; then for s in "${SCENES[@]}"; do train_scene "$s"; done
+else train_scene "$T"; fi

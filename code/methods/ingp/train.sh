@@ -1,48 +1,35 @@
 #!/usr/bin/env bash
-# methods/ingp/train.sh
-# Train Instant-NGP on one or all scenes.
+# methods/ingp/train.sh — Instant-NGP
+# Repo on server: /root/autodl-tmp/instant-ngp
 #
-# Usage:  bash train.sh <scene>
-#         bash train.sh all
+# Usage:  bash train.sh <scene|all>
+# Input:  datasets/guloushuju/<scene>/ingp  (transforms.json ready)
+# Output: output/<scene>/ingp  (model_*.msgpack + training_log.json)
 #
-# Requires: Instant-NGP v2.0dev built to $INGP_ROOT
-#           (default: ~/instant-ngp)
-
+# Server produced checkpoints at 10k/20k/.../50k → n_steps=50000.
 set -euo pipefail
+source "$(dirname "$0")/../../scenes.sh"
 
-SCENES=(chaoli zeli chongjiang zengchong)
-DATA_ROOT="$(dirname "$0")/../../../data"
-INGP_ROOT="${INGP_ROOT:-$HOME/instant-ngp}"
+STEPS=50000
 
 train_scene() {
-    local SCENE="$1"
-    local SOURCE="${DATA_ROOT}/${SCENE}/dense"
-    local OUTPUT="${DATA_ROOT}/${SCENE}/output/ingp"
-    echo "===== INGP  [${SCENE}] ====="
-    [ -d "$SOURCE" ] || { echo "ERROR: ${SOURCE} not found. Run run_sfm.sh first."; return 1; }
-    mkdir -p "$OUTPUT"
+    local KEY="$1"
+    local SRC; SRC="$(scene_dir "$KEY")/ingp"
+    local OUT="${OUTPUT_ROOT}/${CN_NAME[$KEY]:-$KEY}/ingp"
+    echo "===== INGP  [${KEY}] ====="
+    [ -f "${SRC}/transforms.json" ] || { echo "ERROR: ${SRC}/transforms.json missing"; return 1; }
+    mkdir -p "$OUT"
 
-    # Convert COLMAP output to INGP transforms.json
-    python "${INGP_ROOT}/scripts/colmap2nerf.py" \
-        --colmap_db     "${DATA_ROOT}/${SCENE}/colmap.db" \
-        --images        "${SOURCE}/images" \
-        --text          "${SOURCE}/sparse" \
-        --out           "${OUTPUT}/transforms.json" \
-        --aabb_scale 16
-
-    # Train with multiresolution hash encoding (16 log levels, default)
-    "${INGP_ROOT}/build/testbed" \
-        --scene       "${OUTPUT}/transforms.json" \
-        --save_snapshot "${OUTPUT}/snapshot.msgpack" \
-        --n_steps     35000 \
-        --mode        nerf
-
-    echo "[${SCENE}] INGP training done → ${OUTPUT}"
+    # Multiresolution hash encoding (16 log2 levels, default INGP config)
+    python "${INGP_ROOT}/scripts/run.py" \
+        --scene "${SRC}/transforms.json" \
+        --mode nerf --n_steps "$STEPS" \
+        --save_snapshot "${OUT}/model_final.msgpack" \
+        --test_transforms "${SRC}/transforms_test_llff.json" \
+        --screenshot_dir "${OUT}/test_renders"
+    echo "[${KEY}] INGP done → ${OUT}"
 }
 
-TARGET="${1:-all}"
-if [ "$TARGET" = "all" ]; then
-    for s in "${SCENES[@]}"; do train_scene "$s"; done
-else
-    train_scene "$TARGET"
-fi
+T="${1:-all}"
+if [ "$T" = all ]; then for s in "${SCENES[@]}"; do train_scene "$s"; done
+else train_scene "$T"; fi

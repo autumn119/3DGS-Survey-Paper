@@ -12,7 +12,7 @@ This repository provides the **manuscript, benchmark code, and dataset** for a s
 
 ## Overview
 
-**Methods benchmarked** (4): NeRF, 2DGS, 3DGS, and Instant-NGP (INGP).
+**Methods benchmarked** (4): NeRF, 2DGS, 3DGS, and Instant-NGP (INGP). 2DGS and 3DGS share the same COLMAP workspace and Gaussian-splatting codebase.
 
 **Pipeline** (6 stages): UAV image acquisition → corpus construction → camera pose estimation & sparse reconstruction (COLMAP) → neural rendering/reconstruction (4 methods) → quantitative & qualitative evaluation → conservation-oriented interpretation.
 
@@ -26,7 +26,16 @@ This repository provides the **manuscript, benchmark code, and dataset** for a s
 | Training time | Lower is better | Computational efficiency |
 | Rendering speed (FPS) | Higher is better | Real-time visualization capability |
 
-**Fairness control**: identical UAV image set per scene (resized to 1920×1080), shared SfM camera poses, common LLFF-style train/test split, same workstation, and default/recommended parameters per method.
+**Fairness control**: identical UAV image set per scene, shared SfM camera poses, common LLFF-style train/test split (every 8th frame held out), same workstation (RTX 4090), and default/recommended parameters per method.
+
+**Scenes** (4 Dong Drum Towers):
+
+| Key | 中文 | # images | # test views |
+|-----|------|----------|--------------|
+| `celi` | 则里 | 654 | 65 |
+| `zhaoli` | 朝利 | 544 | 54 |
+| `congjiang` | 从江 | 551 | 55 |
+| `zhengchong` | 增冲 | — (frames) | 91 |
 
 ## Prerequisites
 
@@ -36,9 +45,11 @@ This repository provides the **manuscript, benchmark code, and dataset** for a s
 
 **To run the benchmark:**
 - CUDA-capable GPU (experiments used an NVIDIA RTX 4090, 24 GB)
-- Python 3.8+, PyTorch, TensorFlow 2.x (for NeRF)
+- Python 3.8+, PyTorch (2DGS / 3DGS / NeRF-pytorch)
 - COLMAP 3.14.0 with CUDA
-- See `code/requirements.txt` for the full Python environment
+- Method repos cloned locally (paths set in `code/scenes.sh`):
+  `2d-gaussian-splatting`, `gaussian-splatting`, `nerf`, `instant-ngp`
+- See `code/requirements.txt` for the Python environment
 
 ## Build the Paper
 
@@ -71,28 +82,32 @@ UAV-DDT-HeritageBench/
 │   │   ├── method.tex
 │   │   ├── analysis.tex
 │   │   └── conclusion.tex
-├── figures/media/      # All paper figures (image1.png … image14.png)
-├── main.tex            # Main LaTeX entry file
-├── references.bib      # BibTeX references
-├── IEEEtran.cls        # IEEE journal document class
-├── IEEEtran.bst        # IEEE BibTeX style
-├── Makefile            # Build automation
+│   ├── figures/media/      # All paper figures (image1.png … image14.png)
+│   ├── main.tex            # Main LaTeX entry file
+│   ├── references.bib      # BibTeX references
+│   ├── IEEEtran.cls        # IEEE journal document class
+│   ├── IEEEtran.bst        # IEEE BibTeX style
+│   └── Makefile            # Build automation
 │
 ├── code/                   # Benchmark code
-│   ├── preprocess/         # Image screening & resize to 1920×1080
-│   ├── colmap/             # SfM pose estimation scripts (COLMAP 3.14.0)
-│   ├── methods/            # Per-method training / rendering wrappers
-│   │   ├── nerf/           # nerf-pytorch style
-│   │   ├── 2dgs/           # hbb1/2d-gaussian-splatting
-│   │   ├── 3dgs/           # graphdeco-inria/gaussian-splatting
-│   │   └── ingp/           # Instant-NGP v2.0dev
-│   ├── eval/               # PSNR / SSIM / LPIPS + timing metrics
+│   ├── scenes.sh           # Shared scene→dir mapping & repo paths
+│   ├── preprocess/
+│   │   └── extract_frames.py   # UAV video → frame_XXXXXX.jpg (+ blur screen)
+│   ├── colmap/
+│   │   └── run_sfm.sh      # SfM pose estimation (COLMAP 3.14.0, CUDA)
+│   ├── methods/            # Per-method training wrappers
+│   │   ├── nerf/train.sh   # bmild/nerf-pytorch (blender, factor 8)
+│   │   ├── 2dgs/train.sh   # hbb1/2d-gaussian-splatting (30k, sh=3)
+│   │   ├── 3dgs/train.sh   # graphdeco-inria/gaussian-splatting (30k)
+│   │   └── ingp/train.sh   # Instant-NGP (50k steps, hash encoding)
+│   ├── eval/
+│   │   └── metrics.py      # PSNR / SSIM / LPIPS over test views
 │   └── requirements.txt    # Python environment
 │
 ├── data/                   # Dataset (see Data Availability)
-│   ├── <scene>/images/     # UAV images per drum tower scene
-│   ├── <scene>/sparse/     # COLMAP sparse reconstruction
-│   └── splits/             # Train/test image lists (LLFF-style)
+│   ├── <scene>/images/     # UAV frames (frame_XXXXXX.jpg)
+│   ├── <scene>/{2dgs,nerf,ingp}/  # Per-method COLMAP + transforms
+│   └── splits/             # Test image lists per scene (LLFF hold=8)
 │
 ├── supplementary/          # Reconstruction result videos (*.mp4)
 ├── CITATION.cff            # Citation metadata
@@ -105,33 +120,32 @@ UAV-DDT-HeritageBench/
 
 **Hardware/software used**: NVIDIA RTX 4090 (24 GB), COLMAP 3.14.0 (CUDA), PyTorch (2DGS/3DGS), TensorFlow 2.x (NeRF), Instant-NGP v2.0dev.
 
-**Scenes** (4): `chaoli` · `zeli` · `chongjiang` · `zengchong`
+Scene keys: `celi` · `zhaoli` · `congjiang` · `zhengchong` (or `all`).
+Edit `code/scenes.sh` to point `DATA_ROOT` / `OUTPUT_ROOT` / repo paths at your machine.
 
 ```bash
 # 1. Set up Python environment
 cd code
 pip install -r requirements.txt
 
-# 2. Preprocess: blur screening + resize to 1920×1080
-#    Run for one scene or all at once
-python preprocess/prepare_images.py --scene chaoli
-python preprocess/prepare_images.py --scene all
+# 2. (Optional) Extract frames from a UAV video
+python preprocess/extract_frames.py --video celi.mp4 --out ../data/则里/images
 
-# 3. Camera pose estimation with COLMAP (shared across all 4 methods)
-bash colmap/run_sfm.sh chaoli     # or: bash colmap/run_sfm.sh all
+# 3. Camera pose estimation with COLMAP (shared by 2DGS & 3DGS)
+bash colmap/run_sfm.sh celi        # or: bash colmap/run_sfm.sh all
 
-# 4. Train each method (30k iters for 3DGS/2DGS; 200k for NeRF; 35k for INGP)
-bash methods/3dgs/train.sh chaoli
-bash methods/2dgs/train.sh chaoli
-bash methods/nerf/train.sh  chaoli
-bash methods/ingp/train.sh  chaoli
+# 4. Train each method
+bash methods/2dgs/train.sh celi    # 30k iters, sh_degree 3
+bash methods/3dgs/train.sh celi    # 30k iters (reuses 2DGS COLMAP)
+bash methods/nerf/train.sh  celi   # blender type, factor 8
+bash methods/ingp/train.sh  celi   # 50k steps, hash encoding
 
-# 5. Evaluate — PSNR / SSIM / LPIPS across all scenes and methods
+# 5. Evaluate — PSNR / SSIM / LPIPS across all scenes & methods
 python eval/metrics.py --scene all --method all
-# Results saved to data/results_summary.csv
+# Results saved to <OUTPUT_ROOT>/results_summary.csv
 ```
 
-> **Note on Chaoli**: no fully independent held-out test view is available under the current LLFF split; its reported metrics are reference values, not independently validated test-set scores.
+> **Note on 3DGS**: at repo assembly time only 2DGS / NeRF / INGP outputs existed on the training server. `methods/3dgs/train.sh` reproduces 3DGS from the same COLMAP inputs used by 2DGS — run it to complete the four-method benchmark.
 
 ## Data Availability
 

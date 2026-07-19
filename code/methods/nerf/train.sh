@@ -1,45 +1,35 @@
 #!/usr/bin/env bash
-# methods/nerf/train.sh
-# Train NeRF (nerf-pytorch / bmild style) on one or all scenes.
+# methods/nerf/train.sh — NeRF (bmild/nerf-pytorch style)
+# Repo on server: /root/autodl-tmp/autodl-envs/nerf  (run_nerf.py)
 #
-# Usage:  bash train.sh <scene>
-#         bash train.sh all
+# Usage:  bash train.sh <scene|all>
+# Input:  datasets/guloushuju/<scene>/nerf  (transforms_*.json, blender format)
+# Output: output/<scene>/nerf
 #
-# Requires: nerf-pytorch cloned to $NERF_ROOT
-#           (default: ~/nerf-pytorch)
-
+# Real config used on server (see output/*/nerf/nerf_train/args.txt):
+#   dataset_type=blender, factor=8, N_rand=1024, N_samples=64,
+#   N_importance=128, multires=10, lrate=5e-4, lrate_decay=250, llffhold=8
 set -euo pipefail
-
-SCENES=(chaoli zeli chongjiang zengchong)
-DATA_ROOT="$(dirname "$0")/../../../data"
-NERF_ROOT="${NERF_ROOT:-$HOME/nerf-pytorch}"
-ITERS=200000
-N_ENCODE=10       # positional encoding bands
+source "$(dirname "$0")/../../scenes.sh"
 
 train_scene() {
-    local SCENE="$1"
-    local SOURCE="${DATA_ROOT}/${SCENE}/dense"
-    local OUTPUT="${DATA_ROOT}/${SCENE}/output/nerf"
-    echo "===== NeRF  [${SCENE}] ====="
-    [ -d "$SOURCE" ] || { echo "ERROR: ${SOURCE} not found. Run run_sfm.sh first."; return 1; }
-    mkdir -p "$OUTPUT"
+    local KEY="$1"
+    local SRC; SRC="$(scene_dir "$KEY")/nerf"
+    local OUT="${OUTPUT_ROOT}/${CN_NAME[$KEY]:-$KEY}/nerf"
+    echo "===== NeRF  [${KEY}] ====="
+    [ -d "$SRC" ] || { echo "ERROR: ${SRC} not found"; return 1; }
+    mkdir -p "$OUT"
 
     python "${NERF_ROOT}/run_nerf.py" \
-        --config    "${NERF_ROOT}/configs/llff.txt" \
-        --datadir   "$SOURCE" \
-        --basedir   "$OUTPUT" \
-        --expname   "${SCENE}_nerf" \
-        --N_iters   "$ITERS" \
-        --multires  "$N_ENCODE" \
-        --lrate_decay 250 \
-        --llffhold 8
-
-    echo "[${SCENE}] NeRF training done → ${OUTPUT}"
+        --datadir "$SRC" --basedir "$OUT" --expname nerf_train \
+        --dataset_type blender --factor 8 \
+        --N_rand 1024 --N_samples 64 --N_importance 128 \
+        --multires 10 --multires_views 4 \
+        --lrate 5e-4 --lrate_decay 250 --llffhold 8 \
+        --i_testset 50000 --i_weights 10000
+    echo "[${KEY}] NeRF done → ${OUT}"
 }
 
-TARGET="${1:-all}"
-if [ "$TARGET" = "all" ]; then
-    for s in "${SCENES[@]}"; do train_scene "$s"; done
-else
-    train_scene "$TARGET"
-fi
+T="${1:-all}"
+if [ "$T" = all ]; then for s in "${SCENES[@]}"; do train_scene "$s"; done
+else train_scene "$T"; fi

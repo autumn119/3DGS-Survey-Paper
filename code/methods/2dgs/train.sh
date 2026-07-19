@@ -1,43 +1,32 @@
 #!/usr/bin/env bash
-# methods/2dgs/train.sh
-# Train 2D Gaussian Splatting on one or all scenes.
+# methods/2dgs/train.sh — 2D Gaussian Splatting
+# Repo: hbb1/2d-gaussian-splatting  (server: /root/autodl-tmp/2d-gaussian-splatting)
 #
-# Usage:  bash train.sh <scene>
-#         bash train.sh all
-#
-# Requires: hbb1/2d-gaussian-splatting cloned to $GS2D_ROOT
-#           (default: ~/2d-gaussian-splatting)
-
+# Usage:  bash train.sh <scene|all>
+# Input:  datasets/guloushuju/<scene>/2dgs   (COLMAP sparse + images/)
+# Output: output/<scene>/2dgs
 set -euo pipefail
+source "$(dirname "$0")/../../scenes.sh"
 
-SCENES=(chaoli zeli chongjiang zengchong)
-DATA_ROOT="$(dirname "$0")/../../../data"
-GS2D_ROOT="${GS2D_ROOT:-$HOME/2d-gaussian-splatting}"
 ITERS=30000
-RESOLUTION=2      # half resolution
 
 train_scene() {
-    local SCENE="$1"
-    local SOURCE="${DATA_ROOT}/${SCENE}/dense"
-    local OUTPUT="${DATA_ROOT}/${SCENE}/output/2dgs"
-    echo "===== 2DGS  [${SCENE}] ====="
-    [ -d "$SOURCE" ] || { echo "ERROR: ${SOURCE} not found. Run run_sfm.sh first."; return 1; }
-    mkdir -p "$OUTPUT"
+    local KEY="$1"
+    local SRC; SRC="$(scene_dir "$KEY")/2dgs"
+    local OUT="${OUTPUT_ROOT}/${CN_NAME[$KEY]:-$KEY}/2dgs"
+    echo "===== 2DGS  [${KEY}] ====="
+    [ -d "$SRC" ] || { echo "ERROR: ${SRC} not found"; return 1; }
+    mkdir -p "$OUT"
 
+    # sh_degree=3, full resolution (-1), then render + metrics on test split
     python "${GS2D_ROOT}/train.py" \
-        -s "$SOURCE" \
-        -m "$OUTPUT" \
-        --iterations  "$ITERS" \
-        --resolution  "$RESOLUTION" \
-        --depth_ratio 1.0 \
-        --eval
-
-    echo "[${SCENE}] 2DGS training done → ${OUTPUT}"
+        -s "$SRC" -m "$OUT" \
+        --iterations "$ITERS" --resolution -1 --sh_degree 3 --eval
+    python "${GS2D_ROOT}/render.py" -m "$OUT" --skip_train
+    python "${GS2D_ROOT}/metrics.py" -m "$OUT"
+    echo "[${KEY}] 2DGS done → ${OUT}"
 }
 
-TARGET="${1:-all}"
-if [ "$TARGET" = "all" ]; then
-    for s in "${SCENES[@]}"; do train_scene "$s"; done
-else
-    train_scene "$TARGET"
-fi
+T="${1:-all}"
+if [ "$T" = all ]; then for s in "${SCENES[@]}"; do train_scene "$s"; done
+else train_scene "$T"; fi
